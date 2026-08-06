@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from catalogo.models import Categoria, Extra, Flor
+from catalogo.models import Categoria, Componente, Extra, Flor
 from catalogo.validators import validar_texto_sin_html
 
 
@@ -14,6 +14,12 @@ class ExtraSerializer(serializers.ModelSerializer):
     class Meta:
         model = Extra
         fields = ["id", "nombre", "icono", "precio", "admite_texto_personalizado"]
+
+
+class ComponenteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Componente
+        fields = ["id", "nombre", "icono"]
 
 
 class FlorSerializer(serializers.ModelSerializer):
@@ -31,12 +37,18 @@ class FlorSerializer(serializers.ModelSerializer):
         queryset=Extra.objects.filter(activo=True), source="extras",
         write_only=True, required=False, many=True,
     )
+    componentes = ComponenteSerializer(many=True, read_only=True)
+    componentes_ids = serializers.PrimaryKeyRelatedField(
+        queryset=Componente.objects.filter(activo=True), source="componentes",
+        write_only=True, required=False, many=True,
+    )
 
     class Meta:
         model = Flor
         fields = [
             "id", "nombre", "descripcion", "precio", "imagen",
             "categoria", "categoria_id", "extras", "extras_ids",
+            "componentes", "componentes_ids",
             "stock", "disponible", "creado_en",
         ]
         read_only_fields = ["id", "disponible", "creado_en"]
@@ -50,7 +62,7 @@ class FlorSerializer(serializers.ModelSerializer):
 
     def validate_descripcion(self, value: str) -> str:
         valor = value.strip()
-        if len(valor) < 10:
+        if valor and len(valor) < 10:
             raise serializers.ValidationError("La descripción debe tener al menos 10 caracteres.")
         validar_texto_sin_html(valor)
         return valor

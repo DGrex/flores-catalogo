@@ -115,9 +115,32 @@ export default function FlorDetalleModal({ flor, onCerrar }: FlorDetalleModalPro
             {formatearPrecio(flor.precio)}
           </p>
 
-          <p className="text-sm leading-relaxed text-neutral-600">
-            {flor.descripcion}
-          </p>
+          {flor.descripcion && (
+            <p className="text-sm leading-relaxed text-neutral-600">
+              {flor.descripcion}
+            </p>
+          )}
+
+          {flor.componentes.length > 0 && (
+            <div>
+              <p className="mb-2 text-sm font-semibold text-neutral-900">
+                Composición
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {flor.componentes.map((componente) => (
+                  <span
+                    key={componente.id}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-neutral-50 px-3 py-1.5 text-sm font-medium text-neutral-700 ring-1 ring-inset ring-neutral-200"
+                  >
+                    {componente.icono && (
+                      <span aria-hidden="true">{componente.icono}</span>
+                    )}
+                    {componente.nombre}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
 
           {flor.extras.length > 0 && (
             <div>

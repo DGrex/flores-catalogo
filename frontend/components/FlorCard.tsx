@@ -51,9 +51,11 @@ export default function FlorCard({ flor }: FlorCardProps) {
           <h3 className="text-base font-semibold text-neutral-900 sm:text-lg">
             {flor.nombre}
           </h3>
-          <p className="line-clamp-2 flex-1 text-sm text-neutral-500">
-            {flor.descripcion}
-          </p>
+          {flor.descripcion && (
+            <p className="line-clamp-2 flex-1 text-sm text-neutral-500">
+              {flor.descripcion}
+            </p>
+          )}
           <p className="text-xl font-bold text-primary-600">
             {formatearPrecio(flor.precio)}
           </p>

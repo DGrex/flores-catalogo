@@ -12,6 +12,12 @@ export interface Extra {
   admite_texto_personalizado: boolean;
 }
 
+export interface Componente {
+  id: number;
+  nombre: string;
+  icono: string;
+}
+
 export interface Flor {
   id: number;
   nombre: string;
@@ -20,6 +26,7 @@ export interface Flor {
   imagen: string;
   categoria: Categoria | null;
   extras: Extra[];
+  componentes: Componente[];
   stock: number;
   disponible: boolean;
   creado_en: string;

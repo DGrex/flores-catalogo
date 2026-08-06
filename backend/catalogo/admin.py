@@ -1,7 +1,8 @@
+from django import forms
 from django.contrib import admin
 from django.utils.html import format_html
 
-from catalogo.models import Categoria, Extra, Flor
+from catalogo.models import Categoria, Componente, Extra, Flor
 
 
 @admin.register(Categoria)
@@ -18,8 +19,27 @@ class ExtraAdmin(admin.ModelAdmin):
     search_fields = ["nombre"]
 
 
+@admin.register(Componente)
+class ComponenteAdmin(admin.ModelAdmin):
+    list_display = ["nombre", "icono", "activo"]
+    list_filter = ["activo"]
+    search_fields = ["nombre"]
+
+
+class FlorAdminForm(forms.ModelForm):
+    class Meta:
+        model = Flor
+        fields = "__all__"
+        widgets = {
+            # Checkboxes en vez del <select multiple> por defecto: más claro
+            # para elegir qué tipos de flores u otros elementos trae el ramo.
+            "componentes": forms.CheckboxSelectMultiple,
+        }
+
+
 @admin.register(Flor)
 class FlorAdmin(admin.ModelAdmin):
+    form = FlorAdminForm
     list_display = ["nombre", "precio", "categoria", "stock", "disponible", "vista_previa"]
     list_filter = ["disponible", "categoria"]
     search_fields = ["nombre", "descripcion"]
@@ -27,7 +47,7 @@ class FlorAdmin(admin.ModelAdmin):
     filter_horizontal = ["extras"]
     fields = [
         "nombre", "descripcion", "precio", "categoria",
-        "imagen", "vista_previa", "extras", "stock", "disponible",
+        "imagen", "vista_previa", "componentes", "extras", "stock", "disponible",
         "creado_en", "actualizado_en",
     ]
 

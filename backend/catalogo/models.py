@@ -61,12 +61,35 @@ class Extra(models.Model):
         return self.nombre
 
 
+class Componente(models.Model):
+    """Elemento que compone un producto: tipo de flor u otra cosa que lo
+    conforma (ej. Rosas, Girasoles, Chocolates, Peluche). Se elige por
+    checkbox al crear/editar un producto para describir su composición,
+    y se muestra en el catálogo junto a la descripción.
+    """
+
+    nombre = models.CharField(max_length=60, unique=True)
+    icono = models.CharField(
+        max_length=10, blank=True,
+        help_text="Emoji opcional para mostrarlo en el catálogo (ej. 🌹, 🌻, 🍫).",
+    )
+    activo = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = "Componente"
+        verbose_name_plural = "Componentes"
+        ordering = ["nombre"]
+
+    def __str__(self):
+        return self.nombre
+
+
 class Flor(models.Model):
     """Producto del catálogo. Las imágenes se delegan a Cloudinary."""
 
     nombre = models.CharField(max_length=120, validators=[validar_texto_sin_html])
     descripcion = models.TextField(
-        max_length=600, validators=[validar_texto_sin_html]
+        max_length=600, blank=True, validators=[validar_texto_sin_html]
     )
     precio = models.DecimalField(
         max_digits=8, decimal_places=2, validators=[validar_precio_positivo]
@@ -83,6 +106,10 @@ class Flor(models.Model):
     extras = models.ManyToManyField(
         Extra, blank=True, related_name="flores",
         help_text="Complementos disponibles para este producto (luces, mariposas, corona, tarjeta, etc.).",
+    )
+    componentes = models.ManyToManyField(
+        Componente, blank=True, related_name="flores",
+        help_text="Qué tipo de flores u otros elementos incluye este producto (ej. Rosas, Girasoles, Chocolates).",
     )
     stock = models.PositiveIntegerField(default=0)
     disponible = models.BooleanField(default=True)
