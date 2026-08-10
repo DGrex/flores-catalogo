@@ -106,15 +106,61 @@ npm run dev
 
 Sitio: `http://localhost:3000`
 
-## Antes de ir a producción
+## Despliegue a producción (GitHub → deploy automático, costo $0)
 
-1. Crea una cuenta gratuita en [Cloudinary](https://cloudinary.com) y coloca
-   `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY` y `CLOUDINARY_API_SECRET`
-   en el `.env` del backend.
-2. Configura una base de datos PostgreSQL real y colócala en `DATABASE_URL`.
-3. Despliega el backend (Railway, Render, un VPS, etc.) con `DEBUG=False` y
-   tu dominio real en `ALLOWED_HOSTS` y `CORS_ALLOWED_ORIGINS`.
-4. Despliega el frontend en Vercel, apuntando `NEXT_PUBLIC_API_URL` a tu
-   backend en producción.
-5. Cambia `NEXT_PUBLIC_WHATSAPP_NUMERO` por tu número real, en formato
-   internacional sin signos (ej. `593987654321`).
+Backend en Render + base de datos en Neon + frontend en Vercel, los tres
+conectados directamente al repo de GitHub: cada `git push` a `main` dispara
+un redeploy solo, sin subir archivos a mano. Se usa Neon en vez de la
+Postgres integrada de Render porque la de Render (plan gratis) se elimina
+automáticamente 30 días después de creada, sin importar si la usas o no;
+Neon (plan gratis) es persistente y no caduca.
+
+1. Crea una cuenta gratuita en [Cloudinary](https://cloudinary.com) y anota
+   `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY` y `CLOUDINARY_API_SECRET`.
+2. **Base de datos (Neon)**: crea una cuenta en [neon.tech](https://neon.tech),
+   crea un proyecto/base nueva y copia el "Connection string" (incluye
+   `?sslmode=require` al final, Django lo necesita).
+3. **Backend (Render)**: en el dashboard de Render, "New" → "Blueprint" →
+   selecciona este repo. Render lee [`render.yaml`](render.yaml) y crea el
+   web service (sin base de datos propia). Completa las variables marcadas
+   como manuales en el dashboard:
+   - `DATABASE_URL`: el connection string de Neon del paso 2.
+   - `ALLOWED_HOSTS`: el dominio que te asigna Render (`*.onrender.com`) o tu
+     dominio propio.
+   - `CORS_ALLOWED_ORIGINS`: la URL de producción del frontend en Vercel.
+   - `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`
+     del paso 1.
+4. **Frontend (Vercel)**: "Add New Project" → importa este repo → en
+   "Root Directory" selecciona `frontend`. Define las variables de entorno
+   `NEXT_PUBLIC_API_URL` (URL del backend en Render) y
+   `NEXT_PUBLIC_WHATSAPP_NUMERO` (tu número real, formato internacional sin
+   signos, ej. `593987654321`). Vercel despliega automáticamente en cada
+   push, sin configuración adicional.
+5. Tras el primer deploy del backend, entra a la consola/shell de Render y
+   crea tu superusuario: `python manage.py createsuperuser`.
+6. Si ya tenías datos en tu SQLite local que quieres conservar, migra antes
+   o después del paso 5 (ver "Migrar datos existentes a producción" abajo).
+7. Verifica que `CORS_ALLOWED_ORIGINS` en Render y `NEXT_PUBLIC_API_URL` en
+   Vercel apunten correctamente entre sí, y que el catálogo cargue en la URL
+   pública de Vercel.
+
+### Migrar datos existentes a producción
+
+Si ya tienes flores cargadas en tu `db.sqlite3` local y no quieres volver a
+capturarlas a mano:
+
+```bash
+# 1. Exportar desde tu SQLite local (dentro de backend/, con el venv activo)
+python manage.py dumpdata catalogo --indent 2 > catalogo_data.json
+
+# 2. Con el backend ya desplegado y las migraciones corridas en Neon,
+#    importar apuntando a la base de producción
+DATABASE_URL="<connection string de Neon>" python manage.py loaddata catalogo_data.json
+
+# 3. Crear el superusuario directamente contra producción (opcional, si no
+#    lo hiciste desde la consola de Render)
+DATABASE_URL="<connection string de Neon>" python manage.py createsuperuser
+```
+
+Como las imágenes ya están en Cloudinary, no hace falta migrar archivos —
+los registros importados ya traen la referencia correcta.
