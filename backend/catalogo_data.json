@@ -1,0 +1,1147 @@
+[
+{
+  "model": "catalogo.categoria",
+  "pk": 2,
+  "fields": {
+    "nombre": "Navidad",
+    "slug": "navidad"
+  }
+},
+{
+  "model": "catalogo.categoria",
+  "pk": 3,
+  "fields": {
+    "nombre": "Flores",
+    "slug": "flores"
+  }
+},
+{
+  "model": "catalogo.categoria",
+  "pk": 4,
+  "fields": {
+    "nombre": "Cajas Personalizadas",
+    "slug": "cajas"
+  }
+},
+{
+  "model": "catalogo.categoria",
+  "pk": 5,
+  "fields": {
+    "nombre": "Para Hombres",
+    "slug": "para-hombres"
+  }
+},
+{
+  "model": "catalogo.categoria",
+  "pk": 6,
+  "fields": {
+    "nombre": "Ramos con peluches",
+    "slug": "ramos-de-peluches"
+  }
+},
+{
+  "model": "catalogo.extra",
+  "pk": 1,
+  "fields": {
+    "nombre": "Luces",
+    "icono": "💡",
+    "precio": "1.00",
+    "admite_texto_personalizado": false,
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.extra",
+  "pk": 2,
+  "fields": {
+    "nombre": "Mariposa",
+    "icono": "🦋",
+    "precio": "0.25",
+    "admite_texto_personalizado": false,
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.extra",
+  "pk": 3,
+  "fields": {
+    "nombre": "Corona",
+    "icono": "👑",
+    "precio": "2.00",
+    "admite_texto_personalizado": false,
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.extra",
+  "pk": 4,
+  "fields": {
+    "nombre": "Tarjeta",
+    "icono": "💌",
+    "precio": "0.00",
+    "admite_texto_personalizado": true,
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.extra",
+  "pk": 5,
+  "fields": {
+    "nombre": "Birrete",
+    "icono": "🎓",
+    "precio": "2.00",
+    "admite_texto_personalizado": false,
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.extra",
+  "pk": 6,
+  "fields": {
+    "nombre": "Cinta personalizada",
+    "icono": "",
+    "precio": "2.00",
+    "admite_texto_personalizado": true,
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.componente",
+  "pk": 1,
+  "fields": {
+    "nombre": "Rosas",
+    "icono": "🌹",
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.componente",
+  "pk": 2,
+  "fields": {
+    "nombre": "Girasoles",
+    "icono": "🌻",
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.componente",
+  "pk": 3,
+  "fields": {
+    "nombre": "Tulipanes",
+    "icono": "🌷",
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.componente",
+  "pk": 4,
+  "fields": {
+    "nombre": "Lirios",
+    "icono": "🌸",
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.componente",
+  "pk": 5,
+  "fields": {
+    "nombre": "Claveles",
+    "icono": "🌺",
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.componente",
+  "pk": 6,
+  "fields": {
+    "nombre": "Orquídeas",
+    "icono": "🪻",
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.componente",
+  "pk": 7,
+  "fields": {
+    "nombre": "Chocolates",
+    "icono": "🍫",
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.componente",
+  "pk": 8,
+  "fields": {
+    "nombre": "Peluche",
+    "icono": "🧸",
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.componente",
+  "pk": 9,
+  "fields": {
+    "nombre": "Globos",
+    "icono": "🎈",
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.componente",
+  "pk": 10,
+  "fields": {
+    "nombre": "Vino",
+    "icono": "🍷",
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.componente",
+  "pk": 11,
+  "fields": {
+    "nombre": "Campanitas",
+    "icono": "",
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.componente",
+  "pk": 12,
+  "fields": {
+    "nombre": "Margaritas",
+    "icono": "🌼",
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.componente",
+  "pk": 13,
+  "fields": {
+    "nombre": "Lavanda",
+    "icono": "🪻",
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.componente",
+  "pk": 14,
+  "fields": {
+    "nombre": "Flor de loto",
+    "icono": "🪷",
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.componente",
+  "pk": 15,
+  "fields": {
+    "nombre": "Gerberas",
+    "icono": "🌼",
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.componente",
+  "pk": 16,
+  "fields": {
+    "nombre": "Maquillaje",
+    "icono": "💄",
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.componente",
+  "pk": 17,
+  "fields": {
+    "nombre": "Corona",
+    "icono": "👑",
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.componente",
+  "pk": 18,
+  "fields": {
+    "nombre": "Accesorios",
+    "icono": "💎",
+    "activo": true
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 1,
+  "fields": {
+    "nombre": "Sueños cumplidos",
+    "descripcion": "Puedes elegir el color",
+    "precio": "15.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260709-WA0022_boslm7",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-04T02:30:24.463Z",
+    "actualizado_en": "2026-08-07T02:49:48.360Z",
+    "extras": [
+      5,
+      3,
+      1,
+      2,
+      4
+    ],
+    "componentes": [
+      12,
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 2,
+  "fields": {
+    "nombre": "Latido eterno",
+    "descripcion": "Puedes elegir el color",
+    "precio": "19.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260709-WA0024_tjwleh",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-04T18:28:46.771Z",
+    "actualizado_en": "2026-08-06T05:06:44.926Z",
+    "extras": [
+      5,
+      3,
+      2,
+      4
+    ],
+    "componentes": [
+      12,
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 3,
+  "fields": {
+    "nombre": "Ramo Argentino",
+    "descripcion": "Puedes elegir colores y tematica",
+    "precio": "15.00",
+    "categoria": 5,
+    "imagen": "media/flores/2026/08/IMG-20260711-WA0038_b7kcyt",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-04T18:45:54.948Z",
+    "actualizado_en": "2026-08-06T04:41:40.714Z",
+    "extras": [
+      5,
+      1,
+      4
+    ],
+    "componentes": [
+      11,
+      4,
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 4,
+  "fields": {
+    "nombre": "Jardin encantado",
+    "descripcion": "Puedes elegir el color",
+    "precio": "17.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260709-WA0056_dryszd",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-05T19:22:00.043Z",
+    "actualizado_en": "2026-08-06T04:41:28.179Z",
+    "extras": [
+      5,
+      3,
+      1,
+      2,
+      4
+    ],
+    "componentes": [
+      11,
+      4,
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 5,
+  "fields": {
+    "nombre": "Dulzura",
+    "descripcion": "Puedes elegir el color",
+    "precio": "13.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260709-WA0023_alg050",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-06T04:05:13.628Z",
+    "actualizado_en": "2026-08-06T05:08:15.925Z",
+    "extras": [
+      5,
+      3,
+      1,
+      4
+    ],
+    "componentes": [
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 6,
+  "fields": {
+    "nombre": "Sueños cumplidos 2",
+    "descripcion": "Puedes elegir el color",
+    "precio": "15.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260709-WA0026_d2dsdq",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-06T04:47:03.297Z",
+    "actualizado_en": "2026-08-06T04:49:06.729Z",
+    "extras": [
+      5,
+      3,
+      1,
+      2,
+      4
+    ],
+    "componentes": [
+      12,
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 7,
+  "fields": {
+    "nombre": "Belleza",
+    "descripcion": "Puedes elegir el color",
+    "precio": "18.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260709-WA0029_iyds5o",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-06T04:58:15.154Z",
+    "actualizado_en": "2026-08-06T04:58:15.154Z",
+    "extras": [
+      5,
+      3,
+      1,
+      2,
+      4
+    ],
+    "componentes": [
+      12,
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 8,
+  "fields": {
+    "nombre": "Destello",
+    "descripcion": "Puedes elegir el color",
+    "precio": "17.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260709-WA0032_qxp41b",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-06T05:04:34.842Z",
+    "actualizado_en": "2026-08-06T05:06:24.708Z",
+    "extras": [
+      5,
+      3,
+      2,
+      4
+    ],
+    "componentes": [
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 9,
+  "fields": {
+    "nombre": "Pureza",
+    "descripcion": "Puedes elegir el color, mariposa incluida",
+    "precio": "17.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260709-WA0055_a0gn8s",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-06T05:15:32.285Z",
+    "actualizado_en": "2026-08-06T05:15:32.285Z",
+    "extras": [
+      5,
+      3,
+      1,
+      4
+    ],
+    "componentes": [
+      4,
+      12,
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 10,
+  "fields": {
+    "nombre": "Gala de amor",
+    "descripcion": "Puedes elegir el color, corona y mariposa incluidas",
+    "precio": "35.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260709-WA0057_zqckwr",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-06T05:29:09.418Z",
+    "actualizado_en": "2026-08-06T05:29:09.419Z",
+    "extras": [
+      5,
+      1,
+      4
+    ],
+    "componentes": [
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 11,
+  "fields": {
+    "nombre": "Ilumin-hada",
+    "descripcion": "Puedes elegir el color, Luces incluidas",
+    "precio": "15.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260709-WA0058_zcga4q",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-06T05:35:20.006Z",
+    "actualizado_en": "2026-08-06T05:35:20.006Z",
+    "extras": [
+      5,
+      3,
+      2,
+      4
+    ],
+    "componentes": [
+      11,
+      4,
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 12,
+  "fields": {
+    "nombre": "Amor eterno",
+    "descripcion": "Puedes elegir el color",
+    "precio": "20.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260709-WA0059_njxy7n",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-06T05:42:24.256Z",
+    "actualizado_en": "2026-08-06T05:44:41.260Z",
+    "extras": [
+      5,
+      3,
+      1,
+      2,
+      4
+    ],
+    "componentes": [
+      13,
+      4,
+      12,
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 13,
+  "fields": {
+    "nombre": "Perdón",
+    "descripcion": "Puedes elegir el color, luces incluidas y \"Puede no ser de perdón\"",
+    "precio": "12.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260709-WA0060_sullln",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-06T05:50:03.072Z",
+    "actualizado_en": "2026-08-06T05:50:03.072Z",
+    "extras": [
+      3,
+      2,
+      4
+    ],
+    "componentes": [
+      4,
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 14,
+  "fields": {
+    "nombre": "Mágico",
+    "descripcion": "Puedes elegir el color - corona, luces y mariposa incluida",
+    "precio": "28.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260709-WA0064_darzmx",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-06T06:02:07.135Z",
+    "actualizado_en": "2026-08-06T06:03:56.245Z",
+    "extras": [
+      5,
+      6,
+      4
+    ],
+    "componentes": [
+      4,
+      12,
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 15,
+  "fields": {
+    "nombre": "Cariñosito",
+    "descripcion": "Puedes elegir el color",
+    "precio": "15.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260709-WA0067_a9qj7c",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-07T02:48:56.446Z",
+    "actualizado_en": "2026-08-07T03:51:26.781Z",
+    "extras": [
+      5,
+      6,
+      3,
+      1,
+      2,
+      4
+    ],
+    "componentes": [
+      4,
+      12
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 19,
+  "fields": {
+    "nombre": "Tesoro",
+    "descripcion": "Puedes elegir el color.",
+    "precio": "15.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260710-WA0051_gi4tfb",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-07T04:15:36.113Z",
+    "actualizado_en": "2026-08-07T04:15:36.113Z",
+    "extras": [
+      5,
+      1,
+      2,
+      4
+    ],
+    "componentes": [
+      2,
+      1
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 20,
+  "fields": {
+    "nombre": "Destellos",
+    "descripcion": "Tres Girasoles",
+    "precio": "12.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260710-WA0053_vmalnc",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-07T04:23:45.138Z",
+    "actualizado_en": "2026-08-07T04:24:22.127Z",
+    "extras": [
+      5,
+      1,
+      2,
+      4
+    ],
+    "componentes": [
+      2
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 21,
+  "fields": {
+    "nombre": "Solesito",
+    "descripcion": "1 Girasol",
+    "precio": "10.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260710-WA0054_cxdk8v",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-07T04:26:44.076Z",
+    "actualizado_en": "2026-08-07T04:26:44.076Z",
+    "extras": [
+      1,
+      2,
+      4
+    ],
+    "componentes": [
+      2
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 22,
+  "fields": {
+    "nombre": "Love",
+    "descripcion": "Puedes elegir el color",
+    "precio": "10.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260710-WA0056_kpmbxg",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-07T04:32:53.099Z",
+    "actualizado_en": "2026-08-07T04:34:24.558Z",
+    "extras": [
+      5,
+      3,
+      1,
+      2,
+      4
+    ],
+    "componentes": [
+      12,
+      1
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 23,
+  "fields": {
+    "nombre": "Love 2",
+    "descripcion": "Puedes elegir el color",
+    "precio": "10.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260710-WA0058_jj5ttx",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-07T04:34:08.557Z",
+    "actualizado_en": "2026-08-07T04:34:08.557Z",
+    "extras": [
+      3,
+      1,
+      2,
+      4
+    ],
+    "componentes": [
+      12,
+      1
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 24,
+  "fields": {
+    "nombre": "Pasión",
+    "descripcion": "Puedes elegir el color.",
+    "precio": "25.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260710-WA0057_jvc9ns",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-07T04:37:32.318Z",
+    "actualizado_en": "2026-08-07T04:37:57.528Z",
+    "extras": [
+      5,
+      6,
+      3,
+      1,
+      2,
+      4
+    ],
+    "componentes": [
+      12,
+      1
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 25,
+  "fields": {
+    "nombre": "Ternura",
+    "descripcion": "Puedes elegir el color",
+    "precio": "7.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/nueva_o0rpbj",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-07T04:40:13.476Z",
+    "actualizado_en": "2026-08-07T04:43:33.428Z",
+    "extras": [
+      1,
+      2,
+      4
+    ],
+    "componentes": [
+      1
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 26,
+  "fields": {
+    "nombre": "Tiana",
+    "descripcion": "Flor de loto, luces incluidas",
+    "precio": "13.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260710-WA0063_xtt8fz",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-07T04:48:32.503Z",
+    "actualizado_en": "2026-08-07T04:48:45.651Z",
+    "extras": [],
+    "componentes": [
+      14
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 27,
+  "fields": {
+    "nombre": "Pascal",
+    "descripcion": "Lirio con temática de Rapunzel",
+    "precio": "7.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260710-WA0064_ysnsbj",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-07T04:57:04.376Z",
+    "actualizado_en": "2026-08-07T04:57:04.376Z",
+    "extras": [
+      1,
+      2,
+      4
+    ],
+    "componentes": [
+      4
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 28,
+  "fields": {
+    "nombre": "Enredados",
+    "descripcion": "Lirios con temática de Rapunzel, luces incluidas",
+    "precio": "20.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260710-WA0065_bi1imc",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-07T05:01:52.971Z",
+    "actualizado_en": "2026-08-07T05:02:45.234Z",
+    "extras": [
+      2,
+      4
+    ],
+    "componentes": [
+      13,
+      4
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 29,
+  "fields": {
+    "nombre": "Divino",
+    "descripcion": "Puedes elegir el color, luces y mariposa incluidas",
+    "precio": "15.00",
+    "categoria": 3,
+    "imagen": "media/flores/2026/08/IMG-20260710-WA0067_flt4l2",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-07T05:05:59.665Z",
+    "actualizado_en": "2026-08-07T05:05:59.666Z",
+    "extras": [
+      5,
+      6,
+      3,
+      4
+    ],
+    "componentes": [
+      12
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 30,
+  "fields": {
+    "nombre": "Gruñonsito",
+    "descripcion": "Puedes elegir color y peluche de preferencia, luces agregadas",
+    "precio": "25.00",
+    "categoria": 6,
+    "imagen": "media/flores/2026/08/IMG-20260710-WA0068_fujjlk",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-07T05:15:43.952Z",
+    "actualizado_en": "2026-08-07T05:15:43.952Z",
+    "extras": [
+      3,
+      2,
+      4
+    ],
+    "componentes": [
+      4,
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 31,
+  "fields": {
+    "nombre": "Dormilon",
+    "descripcion": "Puedes elegir color y peluche de preferencia, luces agregadas",
+    "precio": "28.00",
+    "categoria": 6,
+    "imagen": "media/flores/2026/08/IMG-20260710-WA0072_z8ejz1",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-07T05:19:44.637Z",
+    "actualizado_en": "2026-08-07T05:21:24.848Z",
+    "extras": [
+      3,
+      2,
+      4
+    ],
+    "componentes": [
+      15,
+      4,
+      12,
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 32,
+  "fields": {
+    "nombre": "Ternura",
+    "descripcion": "Puedes elegir el color, mariposa incluida, birrete opcional.",
+    "precio": "27.00",
+    "categoria": 6,
+    "imagen": "media/flores/2026/08/IMG-20260710-WA0070_sre3lj",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-10T02:46:33.926Z",
+    "actualizado_en": "2026-08-10T02:46:33.926Z",
+    "extras": [
+      5,
+      3,
+      1,
+      4
+    ],
+    "componentes": [
+      4,
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 33,
+  "fields": {
+    "nombre": "Lucifer",
+    "descripcion": "Puedes elegir el color, luces incluidas.",
+    "precio": "25.00",
+    "categoria": 6,
+    "imagen": "media/flores/2026/08/IMG-20260710-WA0071_qceurp",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-10T02:49:21.336Z",
+    "actualizado_en": "2026-08-10T02:49:21.336Z",
+    "extras": [
+      5,
+      3,
+      2,
+      4
+    ],
+    "componentes": [
+      4,
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 34,
+  "fields": {
+    "nombre": "Coquette",
+    "descripcion": "Puedes elegir el color, luces incluidas",
+    "precio": "25.00",
+    "categoria": 6,
+    "imagen": "media/flores/2026/08/IMG-20260710-WA0075_qyvslk",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-10T02:52:24.328Z",
+    "actualizado_en": "2026-08-10T02:52:24.329Z",
+    "extras": [
+      5,
+      3,
+      2,
+      4
+    ],
+    "componentes": [
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 35,
+  "fields": {
+    "nombre": "Corazon",
+    "descripcion": "Caja de corazón con rosas, margaritas, chocolates, peluche y con luces agregadas.\r\nTodo puede ser personalizado a tu gusto 😉",
+    "precio": "30.00",
+    "categoria": 4,
+    "imagen": "media/flores/2026/08/IMG-20260710-WA0074_gfwxve",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-10T03:02:31.121Z",
+    "actualizado_en": "2026-08-10T03:02:31.121Z",
+    "extras": [
+      5,
+      6,
+      3,
+      2,
+      4
+    ],
+    "componentes": [
+      7,
+      12,
+      8,
+      1
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 36,
+  "fields": {
+    "nombre": "Elegancia",
+    "descripcion": "Cartera con chocolates, flores, peluche y  un labial,\r\nTodo puede ser personalizado a tu gusto 🙃.",
+    "precio": "28.00",
+    "categoria": 4,
+    "imagen": "media/flores/2026/08/IMG-20260710-WA0079_xxjx4r",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-10T03:14:42.759Z",
+    "actualizado_en": "2026-08-10T03:34:07.584Z",
+    "extras": [
+      5,
+      3,
+      1,
+      2,
+      4
+    ],
+    "componentes": [
+      7,
+      15,
+      4,
+      16,
+      12,
+      8,
+      3
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 37,
+  "fields": {
+    "nombre": "Princesa",
+    "descripcion": "Caja con una corona, aro, chocolates y flores. las luces están incluidas.\r\nTodo puede ser personalizado a tu gusto 😉.",
+    "precio": "25.00",
+    "categoria": 4,
+    "imagen": "media/flores/2026/08/IMG-20260710-WA0081_us3oy3",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-10T03:29:59.251Z",
+    "actualizado_en": "2026-08-10T03:31:50.194Z",
+    "extras": [
+      2,
+      4
+    ],
+    "componentes": [
+      18,
+      7,
+      17,
+      1
+    ]
+  }
+},
+{
+  "model": "catalogo.flor",
+  "pk": 38,
+  "fields": {
+    "nombre": "Princesa 2",
+    "descripcion": "Caja con una corona, aro, chocolates y flores. las luces están incluidas.\r\nTodo puede ser personalizado a tu gusto 😉.",
+    "precio": "25.00",
+    "categoria": 4,
+    "imagen": "media/flores/2026/08/IMG-20260710-WA0082_mkmihn",
+    "stock": 1,
+    "disponible": true,
+    "creado_en": "2026-08-10T03:48:01.097Z",
+    "actualizado_en": "2026-08-10T03:48:01.097Z",
+    "extras": [
+      2,
+      4
+    ],
+    "componentes": [
+      18,
+      7,
+      17,
+      1
+    ]
+  }
+}
+]
