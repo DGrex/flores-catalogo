@@ -58,6 +58,19 @@ class ValidadorImagenSegura:
             archivo.seek(0)
             imagen = Image.open(archivo)
             imagen.verify()
+
+            # verify() solo revisa que las cabeceras sean validas y deja el
+            # objeto Image inutilizable para mas operaciones. Reabrimos y
+            # forzamos la decodificacion completa de los pixeles: un archivo
+            # truncado o corrupto puede pasar verify() sin problema y recien
+            # fallar al decodificarse de verdad (que es justo lo que hace
+            # Cloudinary al recibirlo, rechazandolo con "Resource is
+            # invalid"). Detectarlo aqui evita que ese fallo aparezca recien
+            # en la subida, como un error 500 en vez de un mensaje claro.
+            archivo.seek(0)
+            imagen = Image.open(archivo)
+            imagen.load()
+
             archivo.seek(0)
         except Exception as exc:  # noqa: BLE001
             raise ValidationError("El archivo no es una imagen válida o está dañado.") from exc

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Image from "next/image";
 
+import ImagenFlor from "@/components/ImagenFlor";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import type { Flor } from "@/lib/api/types";
 import { formatearPrecio } from "@/lib/utils/whatsapp";
@@ -61,7 +61,7 @@ export default function FlorDetalleModal({ flor, onCerrar }: FlorDetalleModalPro
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm sm:p-4"
       onClick={onCerrar}
     >
       <div
@@ -69,10 +69,10 @@ export default function FlorDetalleModal({ flor, onCerrar }: FlorDetalleModalPro
         aria-modal="true"
         aria-label={flor.nombre}
         onClick={(evento) => evento.stopPropagation()}
-        className="grid max-h-[90vh] w-full max-w-3xl grid-cols-1 overflow-y-auto rounded-xl2 bg-white shadow-xl sm:grid-cols-2"
+        className="grid h-[100dvh] w-full grid-cols-1 overflow-y-auto bg-white shadow-xl sm:h-auto sm:max-h-[90vh] sm:max-w-3xl sm:grid-cols-2 sm:rounded-xl2"
       >
         <div className="relative aspect-square w-full bg-primary-50 sm:aspect-auto">
-          <Image
+          <ImagenFlor
             src={flor.imagen}
             alt={flor.nombre}
             fill
@@ -166,7 +166,7 @@ export default function FlorDetalleModal({ flor, onCerrar }: FlorDetalleModalPro
                       {extra.icono && <span aria-hidden="true">{extra.icono}</span>}
                       {extra.nombre}
                       <span className={activo ? "text-white/80" : "text-neutral-400"}>
-                        {costo > 0 ? `+${formatearPrecio(costo)}` : "Incluido"}
+                        {costo > 0 ? `+${formatearPrecio(costo)}` : "Gratis"}
                       </span>
                     </button>
                   );

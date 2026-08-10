@@ -29,6 +29,26 @@ class ValidadorImagenSeguraTestCase(TestCase):
         with self.assertRaises(ValidationError):
             ValidadorImagenSegura()(archivo_nuevo)
 
+    def test_archivo_truncado_falla(self):
+        """Un JPEG cortado a la mitad tiene cabeceras válidas (Image.verify()
+        lo deja pasar) pero no se puede decodificar completo. Cloudinary lo
+        rechazaba con "Resource is invalid" recién al subirlo; el validador
+        debe detectarlo antes, con Image.load().
+        """
+        from PIL import Image
+        import io
+
+        imagen = Image.new("RGB", (200, 200), color="green")
+        buffer = io.BytesIO()
+        imagen.save(buffer, format="JPEG", quality=90)
+        contenido_truncado = buffer.getvalue()[: len(buffer.getvalue()) // 2]
+
+        archivo_truncado = SimpleUploadedFile(
+            "foto.jpg", contenido_truncado, content_type="image/jpeg"
+        )
+        with self.assertRaises(ValidationError):
+            ValidadorImagenSegura()(archivo_truncado)
+
 
 class ValidadoresTestCase(TestCase):
     def test_precio_negativo_falla(self):

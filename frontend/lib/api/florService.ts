@@ -32,24 +32,37 @@ class FlorApiService implements IFlorService {
       url.searchParams.set("categoria__slug", categoriaSlug);
     }
 
-    let respuesta: Response;
-    try {
-      respuesta = await fetch(url.toString(), {
-        next: { revalidate: 60 }, // ISR: refresca el catálogo cada 60s
-      });
-    } catch {
-      throw new ApiError("No se pudo conectar con el servidor. Verifica tu conexión.");
+    const flores: Flor[] = [];
+    let siguienteUrl: string | null = url.toString();
+
+    while (siguienteUrl) {
+      let respuesta: Response;
+      try {
+        respuesta = await fetch(siguienteUrl, {
+          next: { revalidate: 60 }, // ISR: refresca el catálogo cada 60s
+        });
+      } catch {
+        throw new ApiError("No se pudo conectar con el servidor. Verifica tu conexión.");
+      }
+
+      if (!respuesta.ok) {
+        throw new ApiError(
+          `Error al obtener el catálogo (código ${respuesta.status}).`,
+          respuesta.status
+        );
+      }
+
+      const datos: RespuestaPaginada<Flor> | Flor[] = await respuesta.json();
+      if (Array.isArray(datos)) {
+        flores.push(...datos);
+        siguienteUrl = null;
+      } else {
+        flores.push(...datos.results);
+        siguienteUrl = datos.next;
+      }
     }
 
-    if (!respuesta.ok) {
-      throw new ApiError(
-        `Error al obtener el catálogo (código ${respuesta.status}).`,
-        respuesta.status
-      );
-    }
-
-    const datos: RespuestaPaginada<Flor> | Flor[] = await respuesta.json();
-    return Array.isArray(datos) ? datos : datos.results;
+    return flores;
   }
 }
 

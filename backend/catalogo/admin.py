@@ -1,8 +1,14 @@
+import logging
+
+from cloudinary.exceptions import Error as ErrorCloudinary
 from django import forms
 from django.contrib import admin
+from django.core.exceptions import ValidationError
 from django.utils.html import format_html
 
 from catalogo.models import Categoria, Componente, Extra, Flor
+
+logger = logging.getLogger(__name__)
 
 
 @admin.register(Categoria)
@@ -64,4 +70,18 @@ class FlorAdmin(admin.ModelAdmin):
         # Mantiene la regla "sin stock => no disponible" también al guardar
         # desde el admin, sin duplicar la lógica del service layer.
         obj.disponible = obj.stock > 0
-        super().save_model(request, obj, form, change)
+        try:
+            super().save_model(request, obj, form, change)
+        except ErrorCloudinary as exc:
+            # La validación local (ValidadorImagenSegura) ya descarta la
+            # gran mayoría de archivos corruptos o inválidos, pero Cloudinary
+            # puede seguir rechazando algún caso puntual al procesarlo. Se
+            # deja registro con el detalle real para poder investigarlo,
+            # y se traduce a un mensaje claro en vez de un error interno.
+            logger.exception(
+                "Cloudinary rechazó la imagen al guardar la flor %r", obj.nombre
+            )
+            raise ValidationError(
+                f"No se pudo subir la imagen a Cloudinary ({exc}). "
+                "Intenta con otra foto o vuelve a intentarlo en unos minutos."
+            ) from exc

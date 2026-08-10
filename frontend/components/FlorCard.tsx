@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { useCallback, useRef, useState } from "react";
 
 import FlorDetalleModal from "@/components/FlorDetalleModal";
+import ImagenFlor from "@/components/ImagenFlor";
 import type { Flor } from "@/lib/api/types";
+import cloudinaryLoader from "@/lib/utils/cloudinaryLoader";
 import { formatearPrecio } from "@/lib/utils/whatsapp";
 
 interface FlorCardProps {
@@ -13,6 +14,14 @@ interface FlorCardProps {
 
 export default function FlorCard({ flor }: FlorCardProps) {
   const [detalleAbierto, setDetalleAbierto] = useState(false);
+  const precargada = useRef(false);
+
+  const precargarImagenDetalle = useCallback(() => {
+    if (precargada.current) return;
+    precargada.current = true;
+    const imagen = new window.Image();
+    imagen.src = cloudinaryLoader({ src: flor.imagen, width: 768 });
+  }, [flor.imagen]);
 
   return (
     <>
@@ -20,10 +29,13 @@ export default function FlorCard({ flor }: FlorCardProps) {
         <button
           type="button"
           onClick={() => setDetalleAbierto(true)}
+          onMouseEnter={precargarImagenDetalle}
+          onFocus={precargarImagenDetalle}
+          onTouchStart={precargarImagenDetalle}
           aria-label={`Ver información de ${flor.nombre}`}
           className="relative aspect-square w-full overflow-hidden bg-primary-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
         >
-          <Image
+          <ImagenFlor
             src={flor.imagen}
             alt={flor.nombre}
             fill
