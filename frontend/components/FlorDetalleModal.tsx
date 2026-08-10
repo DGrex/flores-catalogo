@@ -36,6 +36,10 @@ export default function FlorDetalleModal({ flor, onCerrar }: FlorDetalleModalPro
 
   const extrasElegidos = flor.extras.filter((extra) => extrasSeleccionados.includes(extra.id));
 
+  const extrasConTextoFaltante = extrasElegidos.filter(
+    (extra) => extra.admite_texto_personalizado && !textosPersonalizados[extra.id]?.trim()
+  );
+
   const totalExtras = extrasElegidos.reduce((suma, extra) => suma + parseFloat(extra.precio), 0);
   const totalEstimado = parseFloat(flor.precio) + totalExtras;
 
@@ -69,9 +73,9 @@ export default function FlorDetalleModal({ flor, onCerrar }: FlorDetalleModalPro
         aria-modal="true"
         aria-label={flor.nombre}
         onClick={(evento) => evento.stopPropagation()}
-        className="grid h-[100dvh] w-full grid-cols-1 overflow-y-auto bg-white shadow-xl sm:h-auto sm:max-h-[90vh] sm:max-w-3xl sm:grid-cols-2 sm:rounded-xl2"
+        className="flex h-[100dvh] w-full flex-col overflow-y-auto bg-white shadow-xl sm:h-[85vh] sm:max-w-5xl sm:flex-row sm:overflow-hidden sm:rounded-xl2"
       >
-        <div className="relative aspect-square w-full bg-primary-50 sm:aspect-auto">
+        <div className="relative aspect-square w-full flex-none bg-primary-50 sm:aspect-auto sm:w-1/2">
           <ImagenFlor
             src={flor.imagen}
             alt={flor.nombre}
@@ -87,7 +91,7 @@ export default function FlorDetalleModal({ flor, onCerrar }: FlorDetalleModalPro
           )}
         </div>
 
-        <div className="flex flex-col gap-4 p-5 sm:p-6">
+        <div className="flex flex-col gap-4 p-5 sm:min-h-0 sm:flex-1 sm:overflow-y-auto sm:p-6">
           <div className="flex items-start justify-between gap-3">
             <div>
               {flor.categoria && (
@@ -175,30 +179,45 @@ export default function FlorDetalleModal({ flor, onCerrar }: FlorDetalleModalPro
 
               {extrasElegidos
                 .filter((extra) => extra.admite_texto_personalizado)
-                .map((extra) => (
-                  <div key={extra.id} className="mt-3">
-                    <label
-                      htmlFor={`texto-extra-${extra.id}`}
-                      className="mb-1 block text-xs font-medium text-neutral-500"
-                    >
-                      Texto para {extra.nombre.toLowerCase()} (opcional)
-                    </label>
-                    <textarea
-                      id={`texto-extra-${extra.id}`}
-                      value={textosPersonalizados[extra.id] ?? ""}
-                      onChange={(evento) =>
-                        setTextosPersonalizados((actual) => ({
-                          ...actual,
-                          [extra.id]: evento.target.value,
-                        }))
-                      }
-                      maxLength={200}
-                      rows={2}
-                      placeholder="Escribe la dedicatoria que quieres incluir..."
-                      className="w-full resize-none rounded-lg border border-neutral-200 px-3 py-2 text-sm text-neutral-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary-500"
-                    />
-                  </div>
-                ))}
+                .map((extra) => {
+                  const faltaTexto = extrasConTextoFaltante.some((e) => e.id === extra.id);
+                  return (
+                    <div key={extra.id} className="mt-3">
+                      <label
+                        htmlFor={`texto-extra-${extra.id}`}
+                        className="mb-1 block text-xs font-medium text-neutral-500"
+                      >
+                        Texto para {extra.nombre.toLowerCase()}{" "}
+                        <span className="text-primary-600">(obligatorio)</span>
+                      </label>
+                      <textarea
+                        id={`texto-extra-${extra.id}`}
+                        value={textosPersonalizados[extra.id] ?? ""}
+                        onChange={(evento) =>
+                          setTextosPersonalizados((actual) => ({
+                            ...actual,
+                            [extra.id]: evento.target.value,
+                          }))
+                        }
+                        maxLength={200}
+                        rows={2}
+                        placeholder="Escribe la dedicatoria que quieres incluir..."
+                        aria-invalid={faltaTexto}
+                        aria-describedby={faltaTexto ? `error-texto-extra-${extra.id}` : undefined}
+                        className={`w-full resize-none rounded-lg border px-3 py-2 text-sm text-neutral-700 focus-visible:outline focus-visible:outline-2 ${
+                          faltaTexto
+                            ? "border-red-400 focus-visible:outline-red-500"
+                            : "border-neutral-200 focus-visible:outline-primary-500"
+                        }`}
+                      />
+                      {faltaTexto && (
+                        <p id={`error-texto-extra-${extra.id}`} className="mt-1 text-xs text-red-600">
+                          Escribe el texto que quieres para {extra.nombre.toLowerCase()}.
+                        </p>
+                      )}
+                    </div>
+                  );
+                })}
 
               {totalExtras > 0 && (
                 <p className="mt-3 text-sm font-semibold text-neutral-900">
@@ -212,7 +231,19 @@ export default function FlorDetalleModal({ flor, onCerrar }: FlorDetalleModalPro
             ¿Buscas agregar algo más? Pídelo directamente y lo conversamos por WhatsApp.
           </p>
 
-          <WhatsAppButton mensaje={mensaje} className="mt-1 w-full">
+          {extrasConTextoFaltante.length > 0 && (
+            <p className="text-xs text-red-600">
+              Completa el texto de{" "}
+              {extrasConTextoFaltante.map((e) => e.nombre.toLowerCase()).join(", ")} para
+              continuar.
+            </p>
+          )}
+
+          <WhatsAppButton
+            mensaje={mensaje}
+            className="mt-1 w-full"
+            disabled={extrasConTextoFaltante.length > 0}
+          >
             Consultar por WhatsApp
           </WhatsAppButton>
         </div>
